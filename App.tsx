@@ -1,93 +1,90 @@
-import React, { Component } from 'react';
-import { Alert, Button, Text, TouchableOpacity, TextInput, View, StyleSheet } from 'react-native';
+import React, { useState } from "react";
+import { StyleSheet, Text, Keyboard, StatusBar } from "react-native";
+import {useAsyncStorage} from '@react-native-community/async-storage';
 
-export default class App extends Component {
+import {
+  Container,
+  Header,
+  Input,
+  Label,
+  Content,
+  Title,
+  Card,
+  CardItem,
+  Button,
+  Body,
+} from "native-base";
 
-    state = {
-      email: '',
-      password: '',
-    };
-  
-  
-  onLogin() {
-    const { email, password } = this.state;
+const App: () => React$Node = () => {
+  const [email, setEmail] = useState();
+  const [password, setPassword] = useState();
 
-    Alert.alert('Credentials', `email: ${email} + password: ${password}`);
+  myfun = async () => {
+
+  await fetch('http://localhost:8000/api/login',{
+    method:'POST',
+    headers:{
+      'Accept': 'application/json',
+      'Content-Type': 'application/json'
+    },
+    body: JSON.stringify({"email": email ,"password": password})
+  }).then(res => res.json())
+  .then(resData =>{
+    alert(resData.message);
+    console.log(resData);
+  });
   }
-
-  render() {
-    return (
-      <View style={styles.container}>
-      <Text style={styles.titleText}>Hi, Welcome To</Text>
-        <Text style={styles.titleText}>Momento</Text>
-        <TextInput
-          value={this.state.email}
-          keyboardType = 'email-address'
-          onChangeText={(email) => this.setState({ email })}
-          placeholder='email'
-          placeholderTextColor = 'white'
-          style={styles.input}
-        />
-        <TextInput
-          value={this.state.password}
-          onChangeText={(password) => this.setState({ password })}
-          placeholder={'password'}
-          secureTextEntry={true}
-          placeholderTextColor = 'white'
-          style={styles.input}
-        />
-        
-     
-        <TouchableOpacity
-          style={styles.button}
-          onPress={this.onLogin.bind(this)}
-       >
-         <Text style={styles.buttonText}> Sign Up / Login </Text>
-       </TouchableOpacity>
-        
-      </View>
-    );
-  }
-}
-
+  return (
+    <>
+      <StatusBar barStyle="dark-content" />
+      <Container>
+        <Content>
+          <Header></Header>
+          <CardItem>
+            <Text style={styles.heading}> Testing api</Text>
+          </CardItem>
+          <CardItem>
+            <Input
+              placeholder="Email"
+              style={styles.input}
+              value={email}
+              onChangeText={(value) => setEmail(value)}
+            />
+          </CardItem>
+          <CardItem>
+            <Input
+              placeholder="Password"
+              style={styles.input}
+              value={password}
+              onChangeText={(value) => setPassword(value)}
+            />
+          </CardItem>
+          <CardItem>
+            <Body>
+              <Button primary block onPress={myfun}>
+                <Text style={styles.btn}>Login here</Text>
+              </Button>
+            </Body>
+          </CardItem>
+        </Content>
+      </Container>
+    </>
+  );
+};
 const styles = StyleSheet.create({
-  container: {
+  heading: {
+    textAlign: "center",
     flex: 1,
-    alignItems: 'center',
-    justifyContent: 'center',
-    backgroundColor: 'salmon',
-  },
-  titleText:{
-    fontFamily: 'Baskerville',
-    fontSize: 50,
-    alignItems: 'center',
-    justifyContent: 'center',
-  },
-  button: {
-    alignItems: 'center',
-    backgroundColor: 'powderblue',
-    width: 200,
-    height: 44,
-    padding: 10,
-    borderWidth: 1,
-    borderColor: 'white',
-    borderRadius: 25,
-    marginBottom: 10,
-  },
-  buttonText:{
-    fontFamily: 'Baskerville',
     fontSize: 20,
-    alignItems: 'center',
-    justifyContent: 'center',
   },
   input: {
-    width: 200,
-    fontFamily: 'Baskerville',
-    fontSize: 20,
-    height: 44,
-    padding: 10,
     borderWidth: 1,
-    borderColor: 'white',
-    marginVertical: 10,
+    borderColor: "blue",
+  },
+  btn: {
+    color: "#fff",
+    fontSize: 22,
   },
 });
+
+export default App;
