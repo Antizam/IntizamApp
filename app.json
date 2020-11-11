@@ -3,6 +3,9 @@
     "name": "IntApp",
     "slug": "IntApp",
     "version": "1.0.0",
+    "packagerOpts": {
+      "port": 8000
+    },
     "orientation": "portrait",
     "icon": "./assets/icon.png",
     "splash": {
