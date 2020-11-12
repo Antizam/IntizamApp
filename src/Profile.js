@@ -16,9 +16,9 @@ export default class Profile extends React.Component {
                     onPress={() => navigate('Arrive')}
                     style={styles.btn}
                 >
-                    <Text style={styles.btnText}>Arriving</Text>
+                    <Text style={styles.btnText}>At School</Text>
                 </TouchableOpacity>
-
+            
                 <TouchableOpacity
                     onPress={() => navigate('LTime')}
                     style={styles.btn}
@@ -68,5 +68,10 @@ const styles = StyleSheet.create({
         justifyContent: "center",
         marginTop: 40,
         marginBottom: 10,
+    },
+    forgot: {
+        textAlign: "center",
+        color: "white",
+        fontSize: 13,
     },
 });

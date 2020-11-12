@@ -11,35 +11,35 @@ import {
 
 export default class Arrive extends React.Component {
     static navigationOptions = {
-        title: 'Arrive',
+        title: 'At School',
     };
 
     confirmArrival = () => {
-        Alert.alert("Your arrival confirmation has been sent to the School !");
+        Alert.alert("Your arrival confirmation has been sent to the school");
     };
 
     confirmPickup = () => {
-        Alert.alert("You successfully confirmed pickup");
+        Alert.alert("You have successfully confirmed a pick up");
     };
 
     render() {
         const { navigate } = this.props.navigation;
         return (
             <View style={styles.container}>
-                <Text style={styles.logo}>Confirm Arriving at School</Text>
+                <Text style={styles.logo}>At School</Text>
 
                 <TouchableOpacity
                     style={styles.btn}
                     onPress={this.confirmArrival}
                 >
-                    <Text style={styles.btnText}>Confirm Arriving</Text>
+                    <Text style={styles.btnText}>Confirm arriving</Text>
                 </TouchableOpacity>
 
                 <TouchableOpacity
                     style={styles.btn}
                     onPress={this.confirmPickup}
                 >
-                    <Text style={styles.btnText}>Confirm pickup</Text>
+                    <Text style={styles.btnText}>Confirm pick up</Text>
                 </TouchableOpacity>
             </View>
         );
