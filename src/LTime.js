@@ -17,13 +17,12 @@ export default class LTime extends Component {
     constructor(props) {
         super(props);
         this.state = {
-            tableHead: ["Sun", "Mon", "Tue", "Wed", "Thu"],
+            tableHead: ["W/D","Sun", "Mon", "Tue", "Wed", "Thu"],
             tableData: [
-                ["week 1", "12:30", "h:M", "h:M", "h:M", "h:M"],
-                ["week 2", "12:30", "h:M", "h:M", "h:M", "h:M"],
-                ["week 3", "12:30", "h:M", "h:M", "h:M", "h:M"],
-                ["week 4", "12:30", "h:M", "h:M", "h:M", "h:M"],
-                ["week 5", "12:30", "h:M", "h:M", "h:M", "h:M"],
+                ["W1", "1:30", "1:30", "1:30", "1:30","1:30" ],
+                ["W2", "1:30", "1:30", "1:30", "1:30","1:30" ],
+                ["W3", "1:30", "1:30", "1:30", "1:30","1:30" ],
+                ["W4", "1:30", "1:30", "1:30", "1:30","1:30" ],
             ],
         };
     }
@@ -42,6 +41,11 @@ export default class LTime extends Component {
                     />
                     <Rows data={state.tableData} textStyle={styles.textData} />
                 </Table>
+                <TouchableOpacity>
+                    <Text style={styles.Red}>
+                        The Time format in P.M.
+                    </Text>
+                </TouchableOpacity>
             </View>
         );
     }
@@ -59,11 +63,15 @@ const styles = StyleSheet.create({
         height: 40,
         backgroundColor: "#00f98e",
     },
-
+    Red: {
+        fontWeight: "bold",
+        color: "#F44336",
+        fontSize: 13,
+    },
     textRow: {
         fontWeight: "bold",
         fontSize: 20,
-        margin: 6,
+        margin: 5,
     },
     textData: {
         color: "white",
