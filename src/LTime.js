@@ -19,11 +19,11 @@ export default class LTime extends Component {
         this.state = {
             tableHead: ["Sun", "Mon", "Tue", "Wed", "Thu"],
             tableData: [
-                ["h:M", "h:M", "h:M", "h:M", "h:M"],
-                ["h:M", "h:M", "h:M", "h:M", "h:M"],
-                ["h:M", "h:M", "h:M", "h:M", "h:M"],
-                ["h:M", "h:M", "h:M", "h:M", "h:M"],
-                ["h:M", "h:M", "h:M", "h:M", "h:M"],
+                ["week 1", "12:30", "h:M", "h:M", "h:M", "h:M"],
+                ["week 2", "12:30", "h:M", "h:M", "h:M", "h:M"],
+                ["week 3", "12:30", "h:M", "h:M", "h:M", "h:M"],
+                ["week 4", "12:30", "h:M", "h:M", "h:M", "h:M"],
+                ["week 5", "12:30", "h:M", "h:M", "h:M", "h:M"],
             ],
         };
     }
